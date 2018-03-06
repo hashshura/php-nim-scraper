@@ -85,6 +85,9 @@ foreach ($tpbCodes as $code){
 	// 2013 to 2017
 	for ($year = 13; $year <= 17; $year++){
 		
+		// For every 5 contiguous not-founds, break $studentNumber iteration.
+		$health = 5;
+		
 		for ($studentNumber = 1; $studentNumber <= 600; $studentNumber++){
 			
 			$nim = $code . $year . sprintf('%03d', $studentNumber);
@@ -133,6 +136,9 @@ foreach ($tpbCodes as $code){
 			
 			if ($match){
 				
+				// When found, reset 'health'.
+				$health = 5;
+				
 				$nims = explode(', ', $match[1]);
 				$name = $match[2];
 				$status = $match[3];
@@ -149,12 +155,21 @@ foreach ($tpbCodes as $code){
 				// What to do with the data?
 				echo ' ', $nims[0], ' ', $nims[1], ' [', $status, ' - ', $major, "]\n", $name, "\n", $itbEmail, ' | ', $nonItbEmail, "\n\n";
 				
-			} else break; // When $studentNumber exceeds actual student number.
+			} else
+				// Reduce 'health' when the corresponding NIM isn't found.
+				$health = $health - 1;
+			
+			if ($health == 0)
+				// When $studentNumber exceeds actual student number.
+				break;
 						
 		}
 		
 	}
 	
 }
+
+curl_close($ch);
+echo "Done.\n"
 
 ?>
