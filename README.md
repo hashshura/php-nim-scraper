@@ -1,6 +1,6 @@
 # php-nim-scraper
 
-Naive approach in scraping all of Institut Teknologi Bandung NIMs (Nomor Induk Mahasiswa) from ITB Network Information Center (nic.itb.ac.id).
+Naive approach in scraping all of Institut Teknologi Bandung NIMs (Nomor Induk Mahasiswa) from ITB Network Information Center (nic.itb.ac.id). To see all of the scraped data in action, see [ITB NIM Finder](https://ashura.id/nim).
 
 ### How-to
 
